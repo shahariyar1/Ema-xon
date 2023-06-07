@@ -1,9 +1,11 @@
+// eslint-disable-next-line no-unused-vars
 import React, { useEffect, useState } from "react";
 import "./Shop.css";
 import Product from "../Product/Product";
 
 const Shop = () => {
   const [products, setProducts] = useState([]);
+  const [cart, setCart] = useState([]);
   useEffect(() => {
     fetch(
       "https://raw.githubusercontent.com/ProgrammingHero1/ema-john-resources/main/fakeData/products.json"
@@ -11,16 +13,24 @@ const Shop = () => {
       .then((res) => res.json())
       .then((data) => setProducts(data));
   }, []);
+
+  const handleAddToCart = (product) => {
+    const newCart = [...cart, product];
+    setCart(newCart);
+  };
   return (
-    <div className="shop-container">
-      <div className="products-container">
+    <div className="main-container">
+      <div className="big-side">
         {products.map((product) => (
-          <Product product={product} key={product.key}></Product>
+          <Product
+            handleAddToCart={handleAddToCart}
+            New={product}
+            key={product.id}></Product>
         ))}
       </div>
-
-      <div className="cart-container">
-        <h4>Order Summary</h4>
+      <div className="small-side">
+        <h4>Order sumary</h4>
+        <p>Selected Items : {cart.length}</p>
       </div>
     </div>
   );

@@ -1,14 +1,24 @@
+.grid-container{
+display: grid;
+grid-template-columns: 3fr;
+}
 .product img{
-    width: 286px;
-    height: 286px;
+    width: 250px;
+    height: 250px;
+    margin-top: 11px;
+    border-radius: 5px;
+   
 }
 .product{
-    width: 300px;
-    height: 510px;
+    margin: 20px;
+    border: 1.5px solid gray;
+    padding: 10px;
+    border-radius: 20px;
 }
-.btn-cart{
+.btn{
     width: 100%;
-    background: #ffe0b3;
-    border: 1px solid #959595;
-    border-radius: 0 0 20px 20px;
+    background: #FFE0B3;
+}
+.btn:hover{
+    background-color: orange;
 }
